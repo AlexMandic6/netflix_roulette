@@ -1,0 +1,22 @@
+.search {
+	background-image: url("../assets/images/search-background.png");
+	background-position: center center;
+	background-size: cover;
+	min-height: 396px;
+	padding: 20px 60px;
+}
+
+.search__logo {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 35px;
+}
+
+.searh__title {
+	color: #fff;
+	text-transform: uppercase;
+}
+
+.search__form {
+	padding: 0 120px;
+}
