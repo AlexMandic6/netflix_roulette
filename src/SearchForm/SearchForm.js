@@ -1,9 +1,16 @@
 import React from "react";
+import "./SearchForm.css";
 
-const SearchForm = () => {
+const SearchForm = ({ searchTerm, onSearch }) => {
 	return (
-		<div>
-			<p>Search bar</p>
+		<div className="search-form">
+			<input
+				className="search-form__input"
+				type="text"
+				placeholder="What do you want to watch?"
+				value={searchTerm}
+				onChange={(e) => onSearch(e.target.value)}
+			/>
 		</div>
 	);
 };
