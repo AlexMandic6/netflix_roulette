@@ -1,0 +1,17 @@
+.genres {
+	position: relative;
+}
+
+.genres::after {
+	content: "";
+	position: absolute;
+	top: 30px;
+	width: 100%;
+	height: 4px;
+	background-color: #555;
+}
+
+.genres__list {
+	display: flex;
+	gap: 30px;
+}
