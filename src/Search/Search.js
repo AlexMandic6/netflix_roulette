@@ -11,7 +11,6 @@ const Search = () => {
 	const onSearch = (searchTerm) => {
 		setSearchTerm(searchTerm);
 	};
-
 	return (
 		<div className="search">
 			<div className="search__logo">
