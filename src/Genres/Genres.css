@@ -1,5 +1,6 @@
 .genres {
 	position: relative;
+	margin-bottom: 30px;
 }
 
 .genres::after {

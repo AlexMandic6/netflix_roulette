@@ -3,7 +3,7 @@ import "./Genre.css";
 
 const Genre = ({ genre, isActive, onGenreClick }) => {
 	const handleClick = () => {
-		onGenreClick(genre); // Notify the parent component of the clicked genre
+		onGenreClick(genre);
 	};
 	const buttonClassName = `genre ${isActive ? "active" : ""}`;
 	return (
