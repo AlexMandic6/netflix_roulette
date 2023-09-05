@@ -3,14 +3,14 @@ import "./Genres.css";
 import Genre from "../Genre/Genre";
 
 const Genres = ({ movies }) => {
-	const [activeGenre, setActiveGenre] = useState(null);
+	const [activeGenre, setActiveGenre] = useState("all");
 
 	const handleGenreClick = (genre) => {
 		setActiveGenre(genre);
 	};
 	if (movies) {
 		const allGenres = movies.flatMap((movie) => movie.genres);
-		const genres = [...new Set(allGenres)];
+		const genres = ["all", ...new Set(allGenres)];
 		const genreButtons = genres.map((genre) => (
 			<li>
 				<Genre

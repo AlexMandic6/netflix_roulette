@@ -18,6 +18,7 @@ const App = () => {
 				return response.json();
 			})
 			.then((responseData) => {
+				console.log("data:", responseData);
 				setData(responseData);
 			})
 			.catch((error) => {
