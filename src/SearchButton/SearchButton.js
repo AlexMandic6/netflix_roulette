@@ -8,6 +8,7 @@ const SearchButton = ({ searchTerm, onSearch }) => {
 			className="search-btn"
 			onClick={() => {
 				onSearch(searchTerm);
+				console.log("Searched Movie:", searchTerm);
 			}}
 		>
 			Search

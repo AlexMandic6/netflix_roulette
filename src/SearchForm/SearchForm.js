@@ -2,6 +2,17 @@ import React from "react";
 import "./SearchForm.css";
 
 const SearchForm = ({ searchTerm, onSearch }) => {
+	const handleInputChange = (e) => {
+		onSearch(e.target.value);
+	};
+
+	const handleKeyDown = (e) => {
+		if (e.key === "Enter") {
+			onSearch(searchTerm);
+			console.log("Searched movie:", searchTerm);
+		}
+	};
+
 	return (
 		<div className="search-form">
 			<input
@@ -9,7 +20,8 @@ const SearchForm = ({ searchTerm, onSearch }) => {
 				type="text"
 				placeholder="What do you want to watch?"
 				value={searchTerm}
-				onChange={(e) => onSearch(e.target.value)}
+				onChange={handleInputChange}
+				onKeyDown={handleKeyDown}
 			/>
 		</div>
 	);
