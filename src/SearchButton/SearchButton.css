@@ -1,0 +1,11 @@
+.search-btn {
+	font-family: "Montserrat", sans-serif;
+	background-color: #f65261;
+	color: #fff;
+	font-size: 20px;
+	font-weight: 500;
+	padding: 16px 75px;
+	text-transform: uppercase;
+	border-radius: 3px;
+	cursor: pointer;
+}
