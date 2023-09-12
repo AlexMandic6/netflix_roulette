@@ -18,12 +18,11 @@ const App = () => {
 		fetch(allMoviesUrl)
 			.then((response) => {
 				if (!response.ok) {
-					throw new Error("Network response was not ok");
+					throw new Error("Network response not ok");
 				}
 				return response.json();
 			})
 			.then((responseData) => {
-				console.log("data:", responseData);
 				setData(responseData);
 			})
 			.catch((error) => {
