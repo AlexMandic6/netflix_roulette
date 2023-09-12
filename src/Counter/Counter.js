@@ -2,10 +2,10 @@ import React from "react";
 import "./Counter.css";
 
 class Counter extends React.Component {
-	constructor(props) {
-		super(props);
+	constructor({ initialCount }) {
+		super(initialCount);
 		this.state = {
-			count: 0,
+			count: initialCount,
 		};
 	}
 
@@ -27,7 +27,7 @@ class Counter extends React.Component {
 			{ className: "counter" },
 			React.createElement(
 				"h1",
-				{ className: "counter__title" },
+				{ className: "counter__title", "data-testid": "count" },
 				`Counter: ${this.state.count}`
 			),
 			React.createElement(

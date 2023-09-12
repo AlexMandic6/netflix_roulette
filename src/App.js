@@ -62,7 +62,7 @@ const App = () => {
 
 	return (
 		<>
-			<Counter />
+			<Counter initialCount={0} />
 			<Search />
 			<Overview
 				allMovies={data.data}
