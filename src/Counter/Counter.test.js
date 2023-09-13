@@ -1,4 +1,5 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import Counter from "./Counter";
 
 describe("Counter", () => {
@@ -13,7 +14,7 @@ describe("Counter", () => {
 		const incrementBtn = screen.getByRole("button", { name: "+" });
 		const countValueBefore = screen.getByTestId("count").textContent;
 		expect(countValueBefore).toEqual(`Counter: 0`);
-		fireEvent.click(incrementBtn);
+		userEvent.click(incrementBtn);
 		const countValueAfter = screen.getByTestId("count").textContent;
 		expect(countValueAfter).toEqual(`Counter: 1`);
 	});
@@ -23,7 +24,7 @@ describe("Counter", () => {
 		const decrementBtn = screen.getByRole("button", { name: "-" });
 		const countValueBefore = screen.getByTestId("count").textContent;
 		expect(countValueBefore).toEqual(`Counter: 0`);
-		fireEvent.click(decrementBtn);
+		userEvent.click(decrementBtn);
 		const countValueAfter = screen.getByTestId("count").textContent;
 		expect(countValueAfter).toEqual(`Counter: -1`);
 	});

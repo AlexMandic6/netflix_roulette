@@ -1,4 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import Search from "./Search";
 
 describe("Search Component", () => {
@@ -10,7 +11,7 @@ describe("Search Component", () => {
 		const buttonElement = screen.getByText("Search");
 
 		fireEvent.change(inputElement, { target: { value: "John Wick" } });
-		fireEvent.click(buttonElement);
+		userEvent.click(buttonElement);
 
 		// Find the input element again to access its value
 		const updatedInput = screen.getByPlaceholderText(

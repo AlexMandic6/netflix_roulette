@@ -1,4 +1,5 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
 import Genres from "./Genres";
 
@@ -62,7 +63,7 @@ describe("Genres Component", () => {
 		);
 
 		const genreButton = screen.getByText("Comedy"); // Choose a non-active genre
-		fireEvent.click(genreButton);
+		userEvent.click(genreButton);
 
 		expect(onSelectMock).toHaveBeenCalledWith("Comedy");
 	});
