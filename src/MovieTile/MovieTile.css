@@ -1,0 +1,31 @@
+.poster,
+.poster__fallback {
+	margin-bottom: 20px;
+}
+
+.poster__fallback {
+	aspect-ratio: 2 / 3;
+}
+
+.poster__header {
+	display: flex;
+	justify-content: space-between;
+	gap: 8px;
+}
+
+.poster__title {
+	color: #bdbdbd;
+	margin-bottom: 8px;
+}
+
+.poster__genres {
+	color: #919191;
+}
+
+.poster__release-date {
+	align-self: flex-start;
+	color: #bdbdbd;
+	padding: 4px 8px;
+	outline: 1px solid #919191;
+	border-radius: 4px;
+}
