@@ -21,26 +21,28 @@ const MovieTile = ({ movieData, onClick }) => {
 	};
 
 	return (
-		<div onClick={() => onClick(movieData)}>
-			<img
-				className="poster"
-				src={movieData?.poster_path}
-				onError={(e) => {
-					e.target.src = fallbackPosterUrl; // Set fallback URL if the original poster_path URL fails to load
-					e.target.classList.add("poster__fallback");
-				}}
-				alt={movieData?.title}
-			/>
-			<div className="poster__header">
-				<h3 className="poster__title">
-					{movieData?.title || `No Title Available.`}
-				</h3>
-				<p className="poster__release-date">
-					{extractYearFromDate(movieData.release_date)}
-				</p>
+		<>
+			<div onClick={() => onClick(movieData)} className="poster">
+				<img
+					className="poster__img"
+					src={movieData?.poster_path}
+					onError={(e) => {
+						e.target.src = fallbackPosterUrl; // Set fallback URL if the original poster_path URL fails to load
+						e.target.classList.add("poster__fallback");
+					}}
+					alt={movieData?.title}
+				/>
+				<div className="poster__header">
+					<h3 className="poster__title">
+						{movieData?.title || `No Title Available.`}
+					</h3>
+					<p className="poster__release-date">
+						{extractYearFromDate(movieData.release_date)}
+					</p>
+				</div>
 			</div>
 			<p className="poster__genres">{renderGenres()}</p>
-		</div>
+		</>
 	);
 };
 
