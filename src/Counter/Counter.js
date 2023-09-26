@@ -3,10 +3,10 @@ import "./Counter.css";
 import PropTypes from "prop-types";
 
 class Counter extends React.Component {
-	constructor({ initialCount }) {
-		super(initialCount);
+	constructor(props) {
+		super(props);
 		this.state = {
-			count: initialCount,
+			count: props.initialCount,
 		};
 	}
 
