@@ -8,16 +8,18 @@ const Movies = ({ moviesByGenre, allMovies, selectedGenre }) => {
 	}
 	console.log("data:", allMovies);
 
+	const onClick = (e) => {
+		console.log("Clicked!!!", e);
+	};
+
 	const filteredMovies = selectedGenre !== "all" ? moviesByGenre : allMovies;
 
 	const movieList = [...filteredMovies].map((movie) => {
-		// Extract the specific props needed for MovieTile
 		const { poster_path, title, release_date, genres } = movie;
 		const movieData = { poster_path, title, release_date, genres };
-
 		return (
 			<li key={movie.id}>
-				<MovieTile movieData={movieData} />
+				<MovieTile movieData={movieData} onClick={(e) => onClick(e)} />
 			</li>
 		);
 	});
