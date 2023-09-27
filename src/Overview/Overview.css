@@ -2,3 +2,7 @@
 	background-color: #232323;
 	padding: 20px 60px 70px;
 }
+
+.overview__header {
+	display: flex;
+}
