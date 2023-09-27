@@ -2,7 +2,7 @@ import Counter from "../Counter/Counter";
 
 export default {
 	component: Counter,
-	title: "Counter",
+	title: "Components/Counter",
 };
 
 const Template = (args) => <Counter {...args} />;
