@@ -67,11 +67,18 @@ const App = () => {
 		setMovieDetail(e);
 	};
 
+	const searchMovie = (e) => {
+		setMovieDetail(e);
+	};
+
 	return (
 		<>
 			<Counter initialCount={0} />
 			{Object.keys(movieDetail).length ? (
-				<MovieDetails movieDetail={movieDetail} />
+				<MovieDetails
+					movieDetail={movieDetail}
+					searchMovie={searchMovie}
+				/>
 			) : (
 				<Search />
 			)}

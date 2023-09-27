@@ -5,7 +5,7 @@ import extractYearFromDate from "../Utils/extractYearFromDate";
 import formatGenres from "../Utils/formatGenres";
 import formatTime from "../Utils/formatTime";
 
-const MovieDetails = ({ movieDetail }) => {
+const MovieDetails = ({ movieDetail, searchMovie }) => {
 	const {
 		poster_path,
 		title,
@@ -19,7 +19,10 @@ const MovieDetails = ({ movieDetail }) => {
 		<div className="movie-details">
 			<header className="search__logo">
 				<Logo />
-				<button className="movie-details__search">
+				<button
+					className="movie-details__search"
+					onClick={() => searchMovie({})}
+				>
 					<img src={searchBtn} alt="search button" />
 				</button>
 			</header>
