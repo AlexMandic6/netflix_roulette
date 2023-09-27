@@ -1,5 +1,6 @@
 .poster {
 	cursor: pointer;
+	width: fit-content;
 }
 
 .poster:hover {
