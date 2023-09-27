@@ -14,6 +14,7 @@ const SortControl = () => {
 			<div class="select">
 				<select
 					id="sort-by"
+					data-testid="sort-select"
 					className="sort-by"
 					onChange={handleSelectChange}
 				>
