@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders MovieDetails component correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="movie-details"
+  >
+    <header
+      class="search__logo"
+    >
+      <div>
+        Mocked Logo
+      </div>
+      <button
+        class="movie-details__search"
+      >
+        <img
+          alt="search button"
+          src="search-button.svg"
+        />
+      </button>
+    </header>
+    <div
+      class="movie-details__main"
+    >
+      <div
+        class="movie-details__image"
+      >
+        <img
+          alt=""
+          src="https://image.tmdb.org/t/p/w500/ePyN2nX9t8SOl70eRW47Q29zUFO.jpg"
+        />
+      </div>
+      <div
+        class="movie-info"
+      >
+        <h1
+          class="movie-info__title"
+        >
+          Tomb Raider 
+          <span>
+            7.5
+          </span>
+        </h1>
+        <p
+          class="movie-info__genres"
+        >
+          Action, Adventure, Fantasy
+        </p>
+        <div
+          class="movie-info__year"
+        >
+          <h4
+            class="movie-info__year-data"
+          >
+            2021
+          </h4>
+          <h4
+            class="movie-info__year-data"
+          >
+            2h 40min
+          </h4>
+        </div>
+        <p
+          class="movie-info__description"
+        >
+          Lara Croft, the fiercely independent daughter of a missing adventurer, must push herself beyond her limits...
+        </p>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
