@@ -6,7 +6,15 @@ import formatGenres from "../Utils/formatGenres";
 import formatTime from "../Utils/formatTime";
 
 const MovieDetails = ({ movieDetail }) => {
-	console.log("movie Detail", movieDetail);
+	const {
+		poster_path,
+		title,
+		vote_average,
+		genres,
+		release_date,
+		runtime,
+		overview,
+	} = movieDetail;
 	return (
 		<div className="movie-details">
 			<header className="search__logo">
@@ -17,27 +25,22 @@ const MovieDetails = ({ movieDetail }) => {
 			</header>
 			<div className="movie-details__main">
 				<div className="movie-details__image">
-					<img src={movieDetail?.poster_path} alt="" />
+					<img src={poster_path} alt="" />
 				</div>
 				<div className="movie-info">
 					<h1 className="movie-info__title">
-						{movieDetail?.title}{" "}
-						<span>{movieDetail?.vote_average}</span>
+						{title} <span>{vote_average}</span>
 					</h1>
-					<p className="movie-info__genres">
-						{formatGenres(movieDetail?.genres)}
-					</p>
+					<p className="movie-info__genres">{formatGenres(genres)}</p>
 					<div className="movie-info__year">
 						<h4 className="movie-info__year-data">
-							{extractYearFromDate(movieDetail?.release_date)}
+							{extractYearFromDate(release_date)}
 						</h4>
 						<h4 className="movie-info__year-data">
-							{formatTime(movieDetail?.runtime)}
+							{formatTime(runtime)}
 						</h4>
 					</div>
-					<p className="movie-info__description">
-						{movieDetail?.overview}
-					</p>
+					<p className="movie-info__description">{overview}</p>
 				</div>
 			</div>
 		</div>
