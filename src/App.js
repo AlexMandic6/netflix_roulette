@@ -5,6 +5,7 @@ import Counter from "./Counter/Counter";
 import Search from "./Search/Search";
 import Overview from "./Overview/Overview";
 import MovieDetails from "./MovieDetails/MovieDetails";
+import Footer from "./Footer/Footer";
 
 const App = () => {
 	const [data, setData] = useState([]);
@@ -81,6 +82,7 @@ const App = () => {
 				selectedGenre={selectedGenre}
 				onClick={onClick}
 			/>
+			<Footer />
 		</>
 	);
 };
