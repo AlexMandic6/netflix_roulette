@@ -4,11 +4,13 @@ import config from "./apiConfig";
 import Counter from "./Counter/Counter";
 import Search from "./Search/Search";
 import Overview from "./Overview/Overview";
+import MovieDetails from "./MovieDetails/MovieDetails";
 
 const App = () => {
 	const [data, setData] = useState([]);
 	const [genreData, setGenreData] = useState([]);
 	const [selectedGenre, setSelectedGenre] = useState("all");
+	const [movieDetail, setMovieDetail] = useState({});
 
 	useEffect(() => {
 		const apiUrl = config.apiUrl;
@@ -60,15 +62,24 @@ const App = () => {
 		setSelectedGenre(genre);
 	};
 
+	const onClick = (e) => {
+		setMovieDetail(e);
+	};
+
 	return (
 		<>
 			<Counter initialCount={0} />
-			<Search />
+			{Object.keys(movieDetail).length ? (
+				<MovieDetails movieDetail={movieDetail} />
+			) : (
+				<Search />
+			)}
 			<Overview
 				allMovies={data.data}
 				moviesByGenre={genreData.data}
 				onSelect={handleGenreClick}
 				selectedGenre={selectedGenre}
+				onClick={onClick}
 			/>
 		</>
 	);

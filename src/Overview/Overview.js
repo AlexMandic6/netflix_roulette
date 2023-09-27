@@ -3,7 +3,13 @@ import "./Overview.css";
 import Genres from "../Genres/Genres";
 import Movies from "../Movies/Movies";
 
-const Overview = ({ allMovies, onSelect, selectedGenre, moviesByGenre }) => {
+const Overview = ({
+	allMovies,
+	onSelect,
+	selectedGenre,
+	moviesByGenre,
+	onClick,
+}) => {
 	return (
 		<div className="overview">
 			<Genres
@@ -16,6 +22,7 @@ const Overview = ({ allMovies, onSelect, selectedGenre, moviesByGenre }) => {
 				moviesByGenre={moviesByGenre}
 				allMovies={allMovies}
 				selectedGenre={selectedGenre}
+				onClick={onClick}
 			/>
 		</div>
 	);

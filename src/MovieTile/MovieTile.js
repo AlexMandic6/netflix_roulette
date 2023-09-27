@@ -1,25 +1,10 @@
 import "./MovieTile.css";
-import extractYearFromDate from "../Utils/ExtractYearFromDate";
+import extractYearFromDate from "../Utils/extractYearFromDate";
+import formatGenres from "../Utils/formatGenres";
 
 const MovieTile = ({ movieData, onClick }) => {
 	const fallbackPosterUrl =
 		"https://static.displate.com/857x1200/displate/2022-04-15/7422bfe15b3ea7b5933dffd896e9c7f9_46003a1b7353dc7b5a02949bd074432a.jpg";
-
-	const renderGenres = () => {
-		const genres = movieData?.genres;
-		if (genres?.length) {
-			const formattedGenres =
-				genres.length === 1
-					? genres[0]
-					: genres.slice(0, -1).join(", ") +
-					  (genres.length === 2 ? " & " : ", ") +
-					  genres.slice(-1)[0];
-
-			return formattedGenres;
-		}
-		return "No genres available.";
-	};
-
 	return (
 		<>
 			<div onClick={() => onClick(movieData)} className="poster">
@@ -41,7 +26,7 @@ const MovieTile = ({ movieData, onClick }) => {
 					</p>
 				</div>
 			</div>
-			<p className="poster__genres">{renderGenres()}</p>
+			<p className="poster__genres">{formatGenres(movieData?.genres)}</p>
 		</>
 	);
 };
