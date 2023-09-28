@@ -2,6 +2,9 @@
 
 :root {
 	--color-red: #f65261;
+	--select-border: #f65261;
+	--select-focus: #232323;
+	--select-arrow: var(--select-border);
 }
 
 * {
@@ -23,8 +26,32 @@ input[type="button"] {
 	padding: 0;
 }
 
+h3 {
+	font-size: 18px;
+	line-height: 22px;
+	font-weight: 500;
+}
+
 ul {
 	list-style: none;
 	margin: 0;
 	padding: 0;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+select {
+	appearance: none;
+	background-color: transparent;
+	border: none;
+	margin: 0;
+	width: 100%;
+	font-family: inherit;
+	font-size: inherit;
+	cursor: inherit;
+	line-height: inherit;
+	outline: none;
 }
