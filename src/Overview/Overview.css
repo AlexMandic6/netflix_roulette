@@ -5,4 +5,5 @@
 
 .overview__header {
 	display: flex;
+	gap: 24px;
 }
