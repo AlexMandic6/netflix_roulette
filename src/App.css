@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap");
 
+:root {
+	--color-red: #f65261;
+}
+
 * {
 	margin: 0;
 	border: 0;
@@ -15,6 +19,8 @@ body {
 button,
 input[type="button"] {
 	font-family: "Montserrat", sans-serif;
+	cursor: pointer;
+	padding: 0;
 }
 
 ul {
