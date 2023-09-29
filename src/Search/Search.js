@@ -4,6 +4,7 @@ import SearchButton from "../SearchButton/SearchButton";
 import Logo from "../Logo.js/Logo";
 import Dialog from "../Dialog/Dialog";
 import CloseIcon from "../CloseIcon/CloseIcon";
+import DialogButton from "../DialogButton/DialogButton";
 import { PortalWithState } from "react-portal";
 
 import "./Search.css";
@@ -21,9 +22,10 @@ const Search = () => {
 				<PortalWithState closeOnOutsideClick closeOnEsc>
 					{({ openPortal, closePortal, isOpen, portal }) => (
 						<>
-							<button onClick={openPortal} className="dialog-btn">
-								Open Dialog
-							</button>
+							<DialogButton
+								onClick={openPortal}
+								buttonTitle="Open Dialog"
+							/>
 							{isOpen &&
 								portal(
 									<Dialog
