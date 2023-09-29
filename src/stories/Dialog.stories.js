@@ -14,27 +14,32 @@ const Template = (args) => (
 				<button onClick={openPortal} className="dialog-btn">
 					Open Dialog
 				</button>
-				{isOpen && portal(<Dialog {...args} />)}
+				{isOpen &&
+					portal(
+						<Dialog>
+							<div className="dialog__header">
+								<h2 className="dialog__title">
+									This is a simple dialog.
+								</h2>
+								<button
+									className="dialog__close-btn"
+									onClick={closePortal}
+								>
+									<CloseIcon />
+								</button>
+							</div>
+							<p className="dialog__text">
+								Lorem ipsum dolor sit amet consectetur
+								adipisicing elit. Necessitatibus repellendus
+								obcaecati asperiores voluptatem iste a culpa
+								sunt placeat molestias porro!
+							</p>
+						</Dialog>
+					)}
 			</>
 		)}
 	</PortalWithState>
 );
 
 export const Default = Template.bind({});
-Default.args = {
-	children: (
-		<>
-			<div className="dialog__header">
-				<h2 className="dialog__title">This is a simple dialog.</h2>
-				<button className="dialog__close-btn">
-					<CloseIcon />
-				</button>
-			</div>
-			<p className="dialog__text">
-				Lorem ipsum dolor sit amet consectetur adipisicing elit.
-				Necessitatibus repellendus obcaecati asperiores voluptatem iste
-				a culpa sunt placeat molestias porro!
-			</p>
-		</>
-	),
-};
+Default.args = {};
