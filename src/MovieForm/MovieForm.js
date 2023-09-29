@@ -27,7 +27,7 @@ const MovieForm = ({ closePortal }) => {
 					<br />
 					<br />
 
-					<label htmlFor="releaseDate">Release Datee:</label>
+					<label htmlFor="releaseDate">Release Date:</label>
 					<input
 						type="date"
 						id="releaseDate"
