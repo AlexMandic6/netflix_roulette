@@ -7,16 +7,11 @@
 	padding: 60px;
 }
 
-.dialog__header {
-	display: flex;
-	justify-content: space-between;
-	margin-bottom: 16px;
-}
-
 .dialog__title {
 	color: white;
 	font-weight: 300;
 	text-transform: uppercase;
+	margin-bottom: 16px;
 }
 
 .dialog__text {
