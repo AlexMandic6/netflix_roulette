@@ -24,7 +24,7 @@ const Search = () => {
 						<>
 							<DialogButton
 								onClick={openPortal}
-								buttonTitle="Open Dialog"
+								buttonTitle="+ Add movie"
 							/>
 							{isOpen &&
 								portal(
@@ -58,7 +58,6 @@ const Search = () => {
 						</>
 					)}
 				</PortalWithState>
-				<button>+ Add movie</button>
 			</div>
 			<div className="search__form__wrapper">
 				<h1 className="search__title">Find your movie</h1>
