@@ -1,5 +1,6 @@
 import Logo from "../Logo.js/Logo";
 import searchBtn from "../assets/images/search-button.svg";
+import Button from "../Button/Button";
 import "./MovieDetails.css";
 import extractYearFromDate from "../Utils/extractYearFromDate";
 import formatGenres from "../Utils/formatGenres";
@@ -19,12 +20,11 @@ const MovieDetails = ({ movieDetail, searchMovie }) => {
 		<div className="movie-details">
 			<header className="search__logo">
 				<Logo />
-				<button
-					className="movie-details__search"
+				<Button
 					onClick={() => searchMovie({})}
-				>
-					<img src={searchBtn} alt="search button" />
-				</button>
+					buttonClass="movie-details__search"
+					buttonText={<img src={searchBtn} alt="search button" />}
+				/>
 			</header>
 			<div className="movie-details__main">
 				<div className="movie-details__image">

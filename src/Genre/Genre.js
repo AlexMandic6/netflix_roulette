@@ -1,5 +1,6 @@
 import React from "react";
 import "./Genre.css";
+import Button from "../Button/Button";
 
 const Genre = ({ genre, isActive, onGenreClick }) => {
 	const handleClick = () => {
@@ -7,9 +8,11 @@ const Genre = ({ genre, isActive, onGenreClick }) => {
 	};
 	const buttonClassName = `genre ${isActive ? "active" : ""}`;
 	return (
-		<button className={buttonClassName} onClick={handleClick}>
-			{genre}
-		</button>
+		<Button
+			onClick={handleClick}
+			buttonClass={buttonClassName}
+			buttonText={genre}
+		/>
 	);
 };
 

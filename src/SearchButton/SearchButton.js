@@ -1,18 +1,17 @@
 import React from "react";
+import Button from "../Button/Button";
 import "./SearchButton.css";
 
 const SearchButton = ({ searchTerm, onSearch }) => {
 	return (
-		<button
-			type="button"
-			className="search-btn"
+		<Button
 			onClick={() => {
 				onSearch(searchTerm);
 				console.log("Searched Movie:", searchTerm);
 			}}
-		>
-			Search
-		</button>
+			buttonClass="search-btn"
+			buttonText="Search"
+		/>
 	);
 };
 
