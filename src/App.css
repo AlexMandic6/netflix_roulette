@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap");
 
+:root {
+	--select-border: #f65261;
+	--select-focus: #232323;
+	--select-arrow: var(--select-border);
+}
+
 * {
 	margin: 0;
 	border: 0;
@@ -15,10 +21,35 @@ body {
 button,
 input[type="button"] {
 	font-family: "Montserrat", sans-serif;
+	cursor: pointer;
+}
+
+h3 {
+	font-size: 18px;
+	line-height: 22px;
+	font-weight: 500;
 }
 
 ul {
 	list-style: none;
 	margin: 0;
 	padding: 0;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+select {
+	appearance: none;
+	background-color: transparent;
+	border: none;
+	margin: 0;
+	width: 100%;
+	font-family: inherit;
+	font-size: inherit;
+	cursor: inherit;
+	line-height: inherit;
+	outline: none;
 }
