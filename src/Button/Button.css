@@ -1,3 +1,25 @@
+.btn-primary {
+	font-family: "Montserrat", sans-serif;
+	background-color: var(--color-red);
+	color: #fff;
+	font-size: 20px;
+	font-weight: 500;
+	padding: 16px 75px;
+	text-transform: uppercase;
+	border-radius: 3px;
+}
+
+.btn-secondary {
+	background-color: transparent;
+	color: var(--color-red);
+	font-size: 20px;
+	font-weight: 500;
+	padding: 16px 75px;
+	text-transform: uppercase;
+	border: 1.5px solid var(--color-red);
+	border-radius: 3px;
+}
+
 .dialog-btn {
 	color: var(--color-red);
 	font-size: 20px;

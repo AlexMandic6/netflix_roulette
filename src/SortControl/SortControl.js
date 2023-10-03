@@ -11,7 +11,7 @@ const SortControl = () => {
 			<label className="sort-by__label" for="sort-by">
 				Sort By:
 			</label>
-			<div class="select">
+			<div className="select">
 				<select
 					id="sort-by"
 					data-testid="sort-select"

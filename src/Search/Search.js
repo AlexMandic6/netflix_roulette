@@ -27,7 +27,12 @@ const Search = () => {
 								buttonText="+ Add movie"
 							/>
 							{isOpen &&
-								portal(<MovieForm closePortal={closePortal} />)}
+								portal(
+									<MovieForm
+										closePortal={closePortal}
+										title="Add Movie"
+									/>
+								)}
 						</>
 					)}
 				</PortalWithState>
