@@ -8,7 +8,7 @@ const SortControl = () => {
 
 	return (
 		<div className="sort">
-			<label className="sort-by__label" for="sort-by">
+			<label className="sort-by__label" htmlFor="sort-by">
 				Sort By:
 			</label>
 			<div className="select">
