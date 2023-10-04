@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import config from "./apiConfig";
 import Counter from "./Counter/Counter";
 import Search from "./Search/Search";
 import Overview from "./Overview/Overview";
 import MovieDetails from "./MovieDetails/MovieDetails";
 import Footer from "./Footer/Footer";
+
+const { REACT_APP_MOVIES_API_KEY } = process.env;
 
 const App = () => {
 	const [data, setData] = useState([]);
@@ -14,9 +15,8 @@ const App = () => {
 	const [movieDetail, setMovieDetail] = useState({});
 
 	useEffect(() => {
-		const apiUrl = config.apiUrl;
 		const limit = "&limit=50";
-		const allMoviesUrl = `${apiUrl}?searchBy=genres${limit}`;
+		const allMoviesUrl = `${REACT_APP_MOVIES_API_KEY}?searchBy=genres${limit}`;
 
 		fetch(allMoviesUrl)
 			.then((response) => {
@@ -34,7 +34,6 @@ const App = () => {
 	}, []);
 
 	useEffect(() => {
-		const apiUrl = config.apiUrl;
 		const queryParams = {
 			searchBy: "genres",
 			filter: selectedGenre,
@@ -42,7 +41,7 @@ const App = () => {
 		};
 		const searchParams = new URLSearchParams(queryParams);
 
-		const fullUrl = `${apiUrl}?${searchParams.toString()}`;
+		const fullUrl = `${REACT_APP_MOVIES_API_KEY}?${searchParams.toString()}`;
 
 		fetch(fullUrl)
 			.then((response) => {
