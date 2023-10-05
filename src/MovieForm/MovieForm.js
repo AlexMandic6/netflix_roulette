@@ -7,7 +7,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import "./MovieForm.css";
 
 import Select from "react-select";
-import SelectStyles from "./MovieFormSelect";
+import SelectStyles from "./MovieFormSelectStyles";
 
 const MovieForm = ({ closePortal, title }) => {
 	const handleSubmit = (event) => {
