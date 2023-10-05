@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import Dialog from "../Dialog/Dialog";
 import Button from "../Button/Button";
-import "./MovieForm.css";
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import "./MovieForm.css";
 
 import Select from "react-select";
+import SelectStyles from "./MovieFormSelect";
 
 const MovieForm = ({ closePortal, title }) => {
 	const handleSubmit = (event) => {
@@ -16,17 +17,8 @@ const MovieForm = ({ closePortal, title }) => {
 		event.target.reset();
 	};
 
-	const Example = () => {
-		const [startDate, setStartDate] = useState(null);
-		return (
-			<DatePicker
-				className="form-group__input"
-				selected={startDate}
-				placeholderText="Select Date"
-				onChange={(date) => setStartDate(date)}
-			/>
-		);
-	};
+	const [startDate, setStartDate] = useState(new Date());
+	const [selectedOption, setSelectedOption] = useState([]);
 
 	const options = [
 		{ value: "crime", label: "Crime" },
@@ -34,8 +26,6 @@ const MovieForm = ({ closePortal, title }) => {
 		{ value: "horror", label: "Horror" },
 		{ value: "comedy", label: "Comedy" },
 	];
-
-	const [selectedOption, setSelectedOption] = useState(null);
 
 	return (
 		<Dialog title={title} closePortal={closePortal}>
@@ -61,7 +51,11 @@ const MovieForm = ({ closePortal, title }) => {
 						>
 							Release Date:
 						</label>
-						<Example />
+						<DatePicker
+							showIcon
+							selected={startDate}
+							onChange={(date) => setStartDate(date)}
+						/>
 					</div>
 					<div className="form-group">
 						<label htmlFor="movieURL" className="form-group__label">
@@ -93,23 +87,13 @@ const MovieForm = ({ closePortal, title }) => {
 							Genre:
 						</label>
 						<Select
-							defaultValue={selectedOption}
-							onChange={setSelectedOption}
+							isMulti
+							value={selectedOption}
+							onChange={(selectedOptions) =>
+								setSelectedOption(selectedOptions)
+							}
 							options={options}
-							styles={{
-								control: (baseStyles, state) => ({
-									...baseStyles,
-									borderColor: state.isFocused
-										? "grey"
-										: "red",
-									border: "none",
-									boxShadow: "none",
-									outline: state.isFocused
-										? "2px solid #fff"
-										: "none",
-									outlineOffset: "3px",
-								}),
-							}}
+							styles={SelectStyles}
 						/>
 					</div>
 					<div className="form-group">
@@ -135,18 +119,20 @@ const MovieForm = ({ closePortal, title }) => {
 							name="overview"
 							rows="5"
 							cols="40"
-							className="form-group__input"
+							className="form-group__input form-group__input--textarea"
 							placeholder="Movie description"
 							required
 						></textarea>
 					</div>
-					{/* <button type="submit">Submit</button>
-					<button type="reset">Reset</button> */}
 					<div className="form-group form-group__btns form-group--full-width">
 						<Button
 							buttonType="reset"
 							buttonText="Reset"
 							buttonClass="btn-secondary"
+							onClick={() => {
+								setStartDate(new Date());
+								setSelectedOption([]);
+							}}
 						/>
 						<Button
 							buttonType="submit"
