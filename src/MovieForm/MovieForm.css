@@ -25,6 +25,10 @@
 	width: 100%;
 }
 
+.form-group__input--textarea {
+	resize: vertical;
+}
+
 .form-group__btns {
 	display: flex;
 	justify-content: flex-end;
@@ -41,4 +45,47 @@
 
 .dropdown__option {
 	background-color: aqua;
+}
+
+.react-datepicker__input-container {
+	position: relative;
+}
+
+.react-datepicker__calendar-icon {
+	width: 20px;
+	height: 20px;
+	fill: var(--color-red);
+	top: 50%;
+	right: 25px;
+	transform: translateY(-50%);
+	padding: 0 !important;
+	pointer-events: none;
+}
+
+.react-datepicker__input-container input {
+	font-size: 20px;
+	width: 100%;
+	background-color: #323232;
+	color: white;
+	padding: 16px 18px;
+}
+
+.react-datepicker__header,
+.react-datepicker__month {
+	background-color: #323232;
+	margin: 0;
+}
+
+.react-datepicker__current-month,
+.react-datepicker__day-name,
+.react-datepicker__day {
+	color: white;
+}
+
+.react-datepicker__day:hover {
+	background-color: #232323;
+}
+
+.react-datepicker__day--selected {
+	background-color: #232323;
 }
