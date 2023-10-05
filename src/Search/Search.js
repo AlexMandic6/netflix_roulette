@@ -18,7 +18,7 @@ const Search = () => {
 		<div className="search">
 			<div className="search__logo">
 				<Logo />
-				<PortalWithState closeOnOutsideClick closeOnEsc>
+				<PortalWithState closeOnEsc>
 					{({ openPortal, closePortal, isOpen, portal }) => (
 						<>
 							<Button
