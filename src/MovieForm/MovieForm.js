@@ -75,11 +75,15 @@ const MovieForm = ({ closePortal, title }) => {
 							Rating:
 						</label>
 						<input
-							type="text"
+							type="number"
 							id="rating"
 							name="rating"
+							min="0"
+							max="10"
+							step="0.1"
 							className="form-group__input"
 							placeholder="7.8"
+							required
 						/>
 					</div>
 					<div className="form-group">
