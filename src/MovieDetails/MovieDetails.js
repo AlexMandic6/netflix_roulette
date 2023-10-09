@@ -1,4 +1,4 @@
-import Logo from "../Logo.js/Logo";
+import Logo from "../Logo/Logo";
 import searchBtn from "../assets/images/search-button.svg";
 import Button from "../Button/Button";
 import "./MovieDetails.css";

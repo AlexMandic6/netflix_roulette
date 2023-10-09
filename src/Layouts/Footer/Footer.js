@@ -1,4 +1,4 @@
-import Logo from "../Logo.js/Logo";
+import Logo from "Logo/Logo";
 import "./Footer.css";
 
 const Footer = () => {

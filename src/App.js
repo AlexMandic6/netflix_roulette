@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import Counter from "./Counter/Counter";
-import Search from "./Search/Search";
-import Overview from "./Overview/Overview";
-import MovieDetails from "./MovieDetails/MovieDetails";
-import Footer from "./Footer/Footer";
+import Counter from "Counter/Counter";
+import Search from "Layouts/Header/Header";
+import Overview from "Overview/Overview";
+import MovieDetails from "MovieDetails/MovieDetails";
+import Footer from "Layouts/Footer/Footer";
 
 const { REACT_APP_MOVIES_API_KEY } = process.env;
 

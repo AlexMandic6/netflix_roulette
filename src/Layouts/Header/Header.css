@@ -1,5 +1,5 @@
 .search {
-	background-image: url("../assets/images/search-background.png");
+	background-image: url("/src/assets/images/search-background.png");
 	background-position: center center;
 	background-size: cover;
 	min-height: 396px;

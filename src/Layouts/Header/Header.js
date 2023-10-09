@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import SearchForm from "../SearchForm/SearchForm";
-import SearchButton from "../SearchButton/SearchButton";
-import Logo from "../Logo.js/Logo";
-import Button from "../Button/Button";
-import MovieForm from "../MovieForm/MovieForm";
+import SearchForm from "SearchForm/SearchForm";
+import SearchButton from "SearchButton/SearchButton";
+import Logo from "Logo/Logo";
+import Button from "Button/Button";
+import MovieForm from "MovieForm/MovieForm";
 import { PortalWithState } from "react-portal";
 
-import "./Search.css";
+import "./Header.css";
 
 const Search = () => {
 	const [searchTerm, setSearchTerm] = useState("");
