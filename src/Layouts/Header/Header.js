@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import SearchForm from "SearchForm/SearchForm";
 import SearchButton from "SearchButton/SearchButton";
-import Logo from "Logo/Logo";
-import Button from "Button/Button";
+import Logo from "Components/Logo/Logo";
+import Button from "Components/Button/Button";
 import MovieForm from "MovieForm/MovieForm";
 import { PortalWithState } from "react-portal";
 

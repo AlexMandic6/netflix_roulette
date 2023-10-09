@@ -1,5 +1,5 @@
-import Dialog from "../Dialog/Dialog";
-import CloseIcon from "../CloseIcon/CloseIcon";
+import Dialog from "../Components/Dialog/Dialog";
+import CloseIcon from "../Components/CloseIcon/CloseIcon";
 import { PortalWithState } from "react-portal";
 
 export default {

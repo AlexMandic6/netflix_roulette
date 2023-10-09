@@ -1,5 +1,5 @@
 import React from "react";
-import MovieTile from "../MovieTile/MovieTile";
+import MovieTile from "MovieTile/MovieTile";
 import "./Movies.css";
 
 const Movies = ({ moviesByGenre, allMovies, selectedGenre, onClick }) => {

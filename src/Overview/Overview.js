@@ -1,8 +1,8 @@
 import React from "react";
 import "./Overview.css";
-import Genres from "../Genres/Genres";
-import Movies from "../Movies/Movies";
-import SortControl from "../SortControl/SortControl";
+import Genres from "Genres/Genres";
+import Movies from "Movies/Movies";
+import SortControl from "SortControl/SortControl";
 
 const Overview = ({
 	allMovies,

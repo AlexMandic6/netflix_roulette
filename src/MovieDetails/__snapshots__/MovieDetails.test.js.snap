@@ -13,6 +13,7 @@ exports[`renders MovieDetails component correctly 1`] = `
       </div>
       <button
         class="movie-details__search"
+        type="button"
       >
         <img
           alt="search button"

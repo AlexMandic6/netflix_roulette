@@ -2,7 +2,7 @@ import React from "react";
 import { render } from "@testing-library/react";
 import MovieDetails from "./MovieDetails";
 
-jest.mock("../Logo.js/Logo", () => () => <div>Mocked Logo</div>);
+jest.mock("../Components/Logo/Logo.js", () => () => <div>Mocked Logo</div>);
 
 const mockMovieDetail = {
 	poster_path:

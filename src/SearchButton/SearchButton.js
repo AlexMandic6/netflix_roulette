@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../Button/Button";
+import Button from "Components/Button/Button";
 import "./SearchButton.css";
 
 const SearchButton = ({ searchTerm, onSearch }) => {

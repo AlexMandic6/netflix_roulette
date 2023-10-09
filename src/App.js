@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import Counter from "Counter/Counter";
+import Counter from "Components/Counter/Counter";
 import Search from "Layouts/Header/Header";
 import Overview from "Overview/Overview";
 import MovieDetails from "MovieDetails/MovieDetails";

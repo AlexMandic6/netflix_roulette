@@ -1,6 +1,6 @@
 import React from "react";
 import "./Genre.css";
-import Button from "../Button/Button";
+import Button from "../Components/Button/Button";
 
 const Genre = ({ genre, isActive, onGenreClick }) => {
 	const handleClick = () => {

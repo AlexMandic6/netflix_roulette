@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Dialog from "../Dialog/Dialog";
-import Button from "../Button/Button";
+import Dialog from "Components/Dialog/Dialog";
+import Button from "Components/Button/Button";
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
