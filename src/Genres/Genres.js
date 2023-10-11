@@ -14,9 +14,8 @@ const Genres = ({ allMovies, onSelect, selectedGenre }) => {
 	const allGenres = allMovies.flatMap((movie) => movie.genres);
 	const genres = ["all", ...new Set(allGenres)];
 	const genreButtons = genres.map((genre) => (
-		<li>
+		<li key={genre}>
 			<Genre
-				key={genre}
 				genre={genre}
 				isActive={genre === selectedGenre}
 				onGenreClick={handleGenreClick}
