@@ -8,7 +8,7 @@ import { PortalWithState } from "react-portal";
 
 import "./Header.css";
 
-const Search = () => {
+const Header = () => {
 	const [searchTerm, setSearchTerm] = useState("");
 
 	const onSearch = (searchTerm) => {
@@ -48,4 +48,4 @@ const Search = () => {
 	);
 };
 
-export default Search;
+export default Header;

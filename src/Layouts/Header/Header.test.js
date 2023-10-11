@@ -1,10 +1,10 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import Search from "./Search";
+import Header from "./Header";
 
-describe("Search Component", () => {
+describe("Header Component", () => {
 	it("should call 'onSearch' prop with the proper value when clicking the Submit button", () => {
-		render(<Search />);
+		render(<Header />);
 		const inputElement = screen.getByPlaceholderText(
 			"What do you want to watch?"
 		);
