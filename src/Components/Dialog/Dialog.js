@@ -6,10 +6,11 @@ import FocusTrap from "focus-trap-react";
 
 const Dialog = ({ children, title, closePortal }) => {
 	return (
-		<FocusTrap focusTrapOptions={{ initialFocus: "#title" }}>
+		<FocusTrap>
 			<div className="dialog">
 				<h2 className="dialog__title">{title}</h2>
 				<Button
+					data-testid="close-button"
 					onClick={closePortal}
 					buttonClass="dialog__close-btn"
 					buttonText={<CloseIcon />}
