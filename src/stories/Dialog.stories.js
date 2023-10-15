@@ -1,5 +1,4 @@
-import Dialog from "../Components/Dialog/Dialog";
-import CloseIcon from "../Components/CloseIcon/CloseIcon";
+import Dialog from "Components/Dialog/Dialog";
 import { PortalWithState } from "react-portal";
 
 export default {
@@ -16,18 +15,10 @@ const Template = ({ ...args }) => (
 				</button>
 				{isOpen &&
 					portal(
-						<Dialog>
-							<div className="dialog__header">
-								<h2 className="dialog__title">
-									{args.dialogTitle}
-								</h2>
-								<button
-									className="dialog__close-btn"
-									onClick={closePortal}
-								>
-									<CloseIcon />
-								</button>
-							</div>
+						<Dialog
+							title={args.dialogTitle}
+							closePortal={closePortal}
+						>
 							<p className="dialog__text">{args.dialogText}</p>
 						</Dialog>
 					)}
