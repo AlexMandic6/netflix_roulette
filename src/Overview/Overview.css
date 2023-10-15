@@ -5,5 +5,7 @@
 
 .overview__header {
 	display: flex;
+	justify-content: space-between;
 	gap: 24px;
+	margin-bottom: 30px;
 }
