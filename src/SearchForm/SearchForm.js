@@ -1,15 +1,12 @@
-import React from "react";
+import { useRef } from "react";
 import "./SearchForm.css";
 
-const SearchForm = ({ searchTerm, onSearch }) => {
-	const handleInputChange = (e) => {
-		onSearch(e.target.value);
-	};
+const SearchForm = ({ onSearch }) => {
+	const inputRef = useRef(null);
 
 	const handleKeyDown = (e) => {
 		if (e.key === "Enter") {
-			onSearch(searchTerm);
-			console.log("Searched movie:", searchTerm);
+			onSearch(inputRef.current.value);
 		}
 	};
 
@@ -18,9 +15,8 @@ const SearchForm = ({ searchTerm, onSearch }) => {
 			<input
 				className="search-form__input"
 				type="text"
+				ref={inputRef}
 				placeholder="What do you want to watch?"
-				value={searchTerm}
-				onChange={handleInputChange}
 				onKeyDown={handleKeyDown}
 			/>
 		</div>
