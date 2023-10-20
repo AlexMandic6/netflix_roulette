@@ -2,13 +2,12 @@ import React from "react";
 import MovieTile from "MovieTile/MovieTile";
 import "./Movies.css";
 
-const Movies = ({ moviesByGenre, allMovies, selectedGenre, onClick }) => {
+const Movies = ({ moviesByGenre, moviesData, selectedGenre, onMoveDetail }) => {
 	if (!moviesByGenre) {
 		return <p>No movies available.</p>;
 	}
-	console.log("data:", allMovies);
 
-	const filteredMovies = selectedGenre !== "all" ? moviesByGenre : allMovies;
+	const filteredMovies = selectedGenre !== "all" ? moviesByGenre : moviesData;
 
 	const movieList = [...filteredMovies].map((movie) => {
 		const {
@@ -20,6 +19,7 @@ const Movies = ({ moviesByGenre, allMovies, selectedGenre, onClick }) => {
 			overview,
 			vote_average,
 		} = movie;
+
 		const movieData = {
 			poster_path,
 			title,
@@ -31,7 +31,7 @@ const Movies = ({ moviesByGenre, allMovies, selectedGenre, onClick }) => {
 		};
 		return (
 			<li key={movie.id}>
-				<MovieTile movieData={movieData} onClick={onClick} />
+				<MovieTile movieData={movieData} onMoveDetail={onMoveDetail} />
 			</li>
 		);
 	});
