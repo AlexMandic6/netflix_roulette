@@ -1,5 +1,7 @@
 .search-form {
-	flex-grow: 1;
+	display: flex;
+	justify-content: space-between;
+	gap: 14px;
 }
 
 .search-form__input {

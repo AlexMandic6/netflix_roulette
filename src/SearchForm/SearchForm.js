@@ -1,10 +1,16 @@
 import { useRef } from "react";
 import "./SearchForm.css";
 
+import Button from "Components/Button/Button";
+
 const SearchForm = ({ onSearch }) => {
 	const inputRef = useRef(null);
 
-	const handleKeyDown = (e) => {
+	const handleSearch = () => {
+		onSearch(inputRef.current.value);
+	};
+
+	const handleSubmit = (e) => {
 		if (e.key === "Enter") {
 			onSearch(inputRef.current.value);
 		}
@@ -17,7 +23,13 @@ const SearchForm = ({ onSearch }) => {
 				type="text"
 				ref={inputRef}
 				placeholder="What do you want to watch?"
-				onKeyDown={handleKeyDown}
+				onKeyDown={handleSubmit}
+			/>
+			<Button
+				buttonType="button"
+				buttonText="Search"
+				buttonClass="btn-primary"
+				onClick={handleSearch}
 			/>
 		</div>
 	);
