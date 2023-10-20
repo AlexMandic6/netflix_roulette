@@ -23,9 +23,3 @@
 .search__form__wrapper {
 	padding: 0 120px;
 }
-
-.search__form {
-	display: flex;
-	justify-content: space-between;
-	gap: 14px;
-}
