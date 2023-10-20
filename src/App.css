@@ -59,7 +59,7 @@ select {
 	outline: none;
 }
 
-.overview__header {
+.movies-wrapper__header {
 	display: flex;
 	justify-content: space-between;
 	gap: 24px;
