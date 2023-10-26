@@ -1,15 +1,8 @@
-import React from "react";
 import MovieTile from "MovieTile/MovieTile";
 import "./Movies.css";
 
-const Movies = ({ moviesByGenre, moviesData, selectedGenre, onMoveDetail }) => {
-	if (!moviesByGenre) {
-		return <p>No movies available.</p>;
-	}
-
-	const filteredMovies = selectedGenre !== "all" ? moviesByGenre : moviesData;
-
-	const movieList = [...filteredMovies].map((movie) => {
+const Movies = ({ moviesData, onMoveDetail }) => {
+	const movieList = [...moviesData].map((movie) => {
 		const {
 			poster_path,
 			title,
