@@ -1,11 +1,6 @@
 import "./SortControl.css";
 
-const SortControl = () => {
-	const handleSelectChange = (event) => {
-		const selectedValue = event.target.value;
-		console.log("Selected option:", selectedValue);
-	};
-
+const SortControl = ({ onSortChange }) => {
 	return (
 		<div className="sort">
 			<label className="sort-by__label" htmlFor="sort-by">
@@ -16,9 +11,9 @@ const SortControl = () => {
 					id="sort-by"
 					data-testid="sort-select"
 					className="sort-by"
-					onChange={handleSelectChange}
+					onChange={onSortChange}
 				>
-					<option value="release-date">Release Date</option>
+					<option value="release_date">Release Date</option>
 					<option value="title">Title</option>
 				</select>
 			</div>
