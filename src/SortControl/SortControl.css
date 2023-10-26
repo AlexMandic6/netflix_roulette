@@ -3,7 +3,7 @@
 	grid-template-areas: "select";
 	align-items: center;
 	position: relative;
-	min-width: 12ch;
+	min-width: 14ch;
 	max-width: 30ch;
 	font-size: 1.25rem;
 	cursor: pointer;
@@ -51,6 +51,7 @@ select:focus + .focus {
 	font-weight: 500;
 	color: white;
 	background-color: #232323;
+	text-transform: uppercase;
 }
 
 .sort-by__label {
