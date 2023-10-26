@@ -1,8 +1,8 @@
 import "./Genres.css";
 import Genre from "../Genre/Genre";
 
-const Genres = ({ moviesData, onSelect, selectedGenre }) => {
-	if (!moviesData) {
+const Genres = ({ onSelect, selectedGenre, genreData }) => {
+	if (!genreData?.length) {
 		return <p>No genres available.</p>;
 	}
 
@@ -10,9 +10,7 @@ const Genres = ({ moviesData, onSelect, selectedGenre }) => {
 		onSelect(genre);
 	};
 
-	const allGenres = moviesData.flatMap((movie) => movie.genres);
-	const genres = ["all", ...new Set(allGenres)];
-	const genreButtons = genres.map((genre) => (
+	const genreButtons = genreData.map((genre) => (
 		<li key={genre}>
 			<Genre
 				genre={genre}
