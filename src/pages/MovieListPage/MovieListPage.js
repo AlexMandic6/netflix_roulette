@@ -1,79 +1,56 @@
 import React, { useState, useEffect } from "react";
-import Overview from "Overview/Overview";
 import Genres from "Genres/Genres";
 import SortControl from "SortControl/SortControl";
 import Movies from "Movies/Movies";
+import MoviesWrapper from "MoviesWrapper/MoviesWrapper";
 import MovieDetails from "MovieDetails/MovieDetails";
 import Header from "Layouts/Header/Header";
-import useFetch from "hooks/useFetch";
+import useFetchMovieData from "hooks/useFetchMovies";
 
 const { REACT_APP_MOVIES_API_KEY } = process.env;
 
 const MovieListPage = () => {
-	const [moviesData, setMoviesData] = useState([]);
 	const [genreData, setGenreData] = useState([]);
-	const [selectedGenre, setSelectedGenre] = useState("all");
 	const [movieDetail, setMovieDetail] = useState({});
+	const [genreListCalculated, setGenreListCalculated] = useState(false);
 	const [searchedMovie, setSearchedMovie] = useState("");
+	const [sortCriterion, setSortCriterion] = useState("release_date");
+	const [selectedGenre, setSelectedGenre] = useState("all");
 
-	const fetchDataFromAPI = async (url, setData, extractData) => {
-		try {
-			const response = await fetch(url);
+	const moviesData = useFetchMovieData(
+		REACT_APP_MOVIES_API_KEY,
+		searchedMovie,
+		sortCriterion,
+		selectedGenre
+	);
 
-			if (!response.ok) {
-				throw new Error("Network response not ok");
-			}
-
-			const responseData = await response.json();
-			const extractedData = extractData
-				? responseData.data
-				: responseData;
-			setData(extractedData);
-		} catch (error) {
-			console.error("Error fetching data:", error);
+	useEffect(() => {
+		if (!genreListCalculated && moviesData.length > 0) {
+			const allGenres = moviesData.flatMap((movie) => movie.genres);
+			const genres = ["all", ...new Set(allGenres)];
+			setGenreData(genres);
+			setGenreListCalculated(true);
 		}
-	};
-
-	useEffect(() => {
-		const search = "?search=";
-		const searchBy = "&searchBy=title";
-		const allMoviesUrl = `${REACT_APP_MOVIES_API_KEY}${search}${searchedMovie}${searchBy}`;
-		fetchDataFromAPI(allMoviesUrl, setMoviesData, true);
-	}, [searchedMovie]);
-
-	useEffect(() => {
-		const limit = "&limit=30";
-		const sort = "?sortBy=title";
-		const allMoviesUrl = `${REACT_APP_MOVIES_API_KEY}${sort}&sortOrder=asc${limit}`;
-		fetchDataFromAPI(allMoviesUrl, setMoviesData, true);
-	}, []);
-
-	useEffect(() => {
-		const queryParams = {
-			searchBy: "genres",
-			filter: selectedGenre,
-			limit: "10",
-		};
-		const searchParams = new URLSearchParams(queryParams);
-		const fullUrl = `${REACT_APP_MOVIES_API_KEY}?${searchParams.toString()}`;
-		fetchDataFromAPI(fullUrl, setGenreData, false);
-	}, [selectedGenre]);
+	}, [moviesData, genreListCalculated]);
 
 	const handleGenreClick = (genre) => {
 		setSelectedGenre(genre);
-	};
-
-	const onClick = (e) => {
-		setMovieDetail(e);
 	};
 
 	const searchMovie = (e) => {
 		setMovieDetail(e);
 	};
 
+	const onMoveDetail = (e) => {
+		setMovieDetail(e);
+	};
+
 	const handleSearchedMovie = (e) => {
 		setSearchedMovie(e);
-		console.log("handleSearchedMovie:", e);
+	};
+
+	const handleSortChange = (e) => {
+		setSortCriterion(e.target.value);
 	};
 
 	return (
@@ -86,23 +63,17 @@ const MovieListPage = () => {
 			) : (
 				<Header onSearchedMovie={handleSearchedMovie} />
 			)}
-			<Overview>
-				<div className="overview__header">
+			<MoviesWrapper>
+				<div className="movies-wrapper__header">
 					<Genres
-						moviesData={moviesData}
-						moviesByGenre={genreData.data}
+						genreData={genreData}
 						onSelect={handleGenreClick}
 						selectedGenre={selectedGenre}
 					/>
-					<SortControl />
+					<SortControl onSortChange={handleSortChange} />
 				</div>
-				<Movies
-					moviesByGenre={genreData.data}
-					moviesData={moviesData}
-					selectedGenre={selectedGenre}
-					onClick={onClick}
-				/>
-			</Overview>
+				<Movies moviesData={moviesData} onMoveDetail={onMoveDetail} />
+			</MoviesWrapper>
 		</>
 	);
 };
