@@ -20,7 +20,7 @@ exports[`renders SortControl component correctly 1`] = `
         id="sort-by"
       >
         <option
-          value="release-date"
+          value="release_date"
         >
           Release Date
         </option>

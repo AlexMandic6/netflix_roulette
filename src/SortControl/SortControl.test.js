@@ -1,6 +1,6 @@
 import { render, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import SortControl from "../SortControl/SortControl";
+import SortControl from "./SortControl";
 
 test("renders SortControl component correctly", () => {
 	const { asFragment, getByLabelText } = render(<SortControl />);
@@ -17,6 +17,6 @@ test("handles select change correctly", () => {
 	fireEvent.change(selectElement, { target: { value: "title" } });
 	expect(selectElement.value).toBe("title");
 
-	fireEvent.change(selectElement, { target: { value: "release-date" } });
-	expect(selectElement.value).toBe("release-date");
+	fireEvent.change(selectElement, { target: { value: "release_date" } });
+	expect(selectElement.value).toBe("release_date");
 });
