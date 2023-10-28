@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import "./SearchForm.css";
 
-import Button from "Components/Button/Button";
+import Button from "components/Button/Button";
 
 const SearchForm = ({ onSearch }) => {
 	const inputRef = useRef(null);

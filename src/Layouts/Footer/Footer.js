@@ -1,4 +1,4 @@
-import Logo from "Components/Logo/Logo";
+import Logo from "components/Logo/Logo";
 import "./Footer.css";
 
 const Footer = () => {

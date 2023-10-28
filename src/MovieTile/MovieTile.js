@@ -1,6 +1,6 @@
 import "./MovieTile.css";
-import extractYearFromDate from "Utils/extractYearFromDate";
-import formatGenres from "Utils/formatGenres";
+import extractYearFromDate from "utils/extractYearFromDate";
+import formatGenres from "utils/formatGenres";
 
 const MovieTile = ({ movieData, onMoveDetail }) => {
 	const fallbackPosterUrl =

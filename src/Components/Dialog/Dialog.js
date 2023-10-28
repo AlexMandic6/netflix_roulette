@@ -1,6 +1,6 @@
 import "./Dialog.css";
-import Button from "Components/Button/Button";
-import CloseIcon from "Components/CloseIcon/CloseIcon";
+import Button from "components/Button/Button";
+import CloseIcon from "components/CloseIcon/CloseIcon";
 
 import FocusTrap from "focus-trap-react";
 

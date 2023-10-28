@@ -4,7 +4,7 @@ import SortControl from "SortControl/SortControl";
 import Movies from "Movies/Movies";
 import MoviesWrapper from "MoviesWrapper/MoviesWrapper";
 import MovieDetails from "MovieDetails/MovieDetails";
-import Header from "Layouts/Header/Header";
+import Header from "layouts/Header/Header";
 import useFetchMovieData from "hooks/useFetchMovies";
 
 const { REACT_APP_MOVIES_API_KEY } = process.env;

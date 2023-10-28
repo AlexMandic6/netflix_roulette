@@ -1,8 +1,8 @@
 import React from "react";
 import "./App.css";
-import Counter from "Components/Counter/Counter";
+import Counter from "components/Counter/Counter";
 import MovieListPage from "pages/MovieListPage/MovieListPage";
-import Footer from "Layouts/Footer/Footer";
+import Footer from "layouts/Footer/Footer";
 
 const App = () => {
 	return (

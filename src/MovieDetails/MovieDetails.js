@@ -1,10 +1,10 @@
-import Logo from "Components/Logo/Logo";
+import Logo from "components/Logo/Logo";
 import searchBtn from "assets/images/search-button.svg";
-import Button from "Components/Button/Button";
+import Button from "components/Button/Button";
 import "./MovieDetails.css";
-import extractYearFromDate from "Utils/extractYearFromDate";
-import formatGenres from "Utils/formatGenres";
-import formatTime from "Utils/formatTime";
+import extractYearFromDate from "utils/extractYearFromDate";
+import formatGenres from "utils/formatGenres";
+import formatTime from "utils/formatTime";
 
 const MovieDetails = ({ movieDetail, searchMovie }) => {
 	const {
