@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Genres from "Genres/Genres";
+import Genres from "containers/genresContainer/Genres/Genres";
 import SortControl from "components/SortControl/SortControl";
-import Movies from "Movies/Movies";
-import MoviesWrapper from "MoviesWrapper/MoviesWrapper";
+import Movies from "containers/moviesContainer/Movies/Movies";
+import MoviesWrapper from "containers/moviesContainer/MoviesWrapper/MoviesWrapper";
 import MovieDetails from "components/MovieDetails/MovieDetails";
 import Header from "layouts/Header/Header";
 import useFetchMovieData from "hooks/useFetchMovies";
