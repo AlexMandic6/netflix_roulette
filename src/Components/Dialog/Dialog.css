@@ -24,6 +24,10 @@
 	font-weight: 400;
 }
 
+.dialog__description {
+	margin-bottom: 50px;
+}
+
 .dialog-btn {
 	color: var(--color-red);
 	font-size: 20px;
