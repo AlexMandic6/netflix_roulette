@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Meta, StoryObj } from "@storybook/react";
-import SearchForm from "../SearchForm/SearchForm.js";
+import SearchForm from "../components/SearchForm/SearchForm.js";
 
 const meta: Meta<typeof SearchForm> = {
 	title: "Components/SearchForm",

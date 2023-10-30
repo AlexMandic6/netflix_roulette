@@ -1,7 +1,7 @@
-import SearchForm from "SearchForm/SearchForm";
+import SearchForm from "components/SearchForm/SearchForm";
 import Logo from "components/Logo/Logo";
 import Button from "components/Button/Button";
-import MovieForm from "MovieForm/MovieForm";
+import MovieForm from "components/MovieForm/MovieForm";
 import { PortalWithState } from "react-portal";
 import "./Header.css";
 

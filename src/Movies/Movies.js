@@ -1,4 +1,4 @@
-import MovieTile from "MovieTile/MovieTile";
+import MovieTile from "components/MovieTile/MovieTile";
 import "./Movies.css";
 
 const Movies = ({ moviesData, onMoveDetail }) => {
