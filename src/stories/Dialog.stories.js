@@ -1,4 +1,4 @@
-import Dialog from "Components/Dialog/Dialog";
+import Dialog from "components/Dialog/Dialog";
 import { PortalWithState } from "react-portal";
 
 export default {
