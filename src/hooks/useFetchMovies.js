@@ -10,6 +10,9 @@ const useFetchMovieData = (
 	const [moviesData, setMoviesData] = useState([]);
 
 	useEffect(() => {
+		const controller = new AbortController();
+		const signal = controller.signal;
+
 		const fetchData = async () => {
 			const baseUrl = REACT_APP_MOVIES_API_KEY;
 			const params = new URLSearchParams();
@@ -29,7 +32,7 @@ const useFetchMovieData = (
 			const url = `${baseUrl}?${params.toString()}`;
 
 			try {
-				const response = await axios.get(url);
+				const response = await axios.get(url, { signal });
 
 				if (response.statusText !== "OK") {
 					throw new Error("Network response not ok");
@@ -41,11 +44,16 @@ const useFetchMovieData = (
 
 				setMoviesData(data);
 			} catch (error) {
-				console.error("Error fetching data:", error);
+				if (!axios.isCancel(error)) {
+					console.error("Error fetching data:", error);
+				}
 			}
 		};
 
 		fetchData();
+		return () => {
+			controller.abort();
+		};
 	}, [searchedMovie, sortCriterion, selectedGenre, REACT_APP_MOVIES_API_KEY]);
 
 	return moviesData;
