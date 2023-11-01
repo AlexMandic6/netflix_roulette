@@ -1,5 +1,5 @@
 import { action } from "@storybook/addon-actions";
-import MovieDetails from "../MovieDetails/MovieDetails";
+import MovieDetails from "../components/MovieDetails/MovieDetails";
 
 export default {
 	title: "Components/MovieDetails",

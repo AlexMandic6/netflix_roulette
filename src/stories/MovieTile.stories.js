@@ -1,5 +1,5 @@
 import { action } from "@storybook/addon-actions";
-import MovieTile from "../MovieTile/MovieTile";
+import MovieTile from "../components/MovieTile/MovieTile";
 
 export default {
 	title: "Components/MovieTile",

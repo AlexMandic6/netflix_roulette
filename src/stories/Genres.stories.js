@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Genres from "../Genres/Genres";
+import Genres from "../containers/genresContainer/Genres/Genres";
 import "../App.css";
 
 export default {
