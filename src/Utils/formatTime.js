@@ -1,6 +1,6 @@
 const formatTime = (minutes) => {
 	if (typeof minutes !== "number" || isNaN(minutes) || minutes < 0) {
-		return "Invalid input";
+		return;
 	}
 
 	const hours = Math.floor(minutes / 60);

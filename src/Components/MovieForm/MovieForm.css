@@ -39,14 +39,6 @@
 	grid-column: 1 / -1;
 }
 
-.dropdown {
-	background-color: rebeccapurple;
-}
-
-.dropdown__option {
-	background-color: aqua;
-}
-
 .react-datepicker__input-container {
 	position: relative;
 }
