@@ -14,7 +14,11 @@ const Genres = ({ onSelect, selectedGenre, genreData }) => {
 		<li key={genre}>
 			<Genre
 				genre={genre}
-				isActive={genre === selectedGenre}
+				isActive={
+					genre === "all"
+						? selectedGenre === ""
+						: genre === selectedGenre
+				}
 				onGenreClick={handleGenreClick}
 			/>
 		</li>
