@@ -1,11 +1,19 @@
 import "./Genre.css";
 import Button from "components/Button/Button";
+import { useSearchParams } from "react-router-dom";
 
-const Genre = ({ genre, isActive, onGenreClick }) => {
-	const buttonClassName = `genre ${isActive ? "active" : ""}`;
+const Genre = ({ genre }) => {
+	const [searchParams, setSearchParams] = useSearchParams();
+
+	const selectedGenre = searchParams.get("filter") || "all";
+
+	const buttonClassName = `genre ${genre === selectedGenre ? "active" : ""}`;
 
 	const handleClick = () => {
-		onGenreClick(genre);
+		setSearchParams((searchParams) => {
+			searchParams.set("filter", genre);
+			return searchParams;
+		});
 	};
 
 	return (
