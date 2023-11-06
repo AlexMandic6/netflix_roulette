@@ -1,6 +1,17 @@
 import "./SortControl.css";
+import { useSearchParams } from "react-router-dom";
 
-const SortControl = ({ onSortChange }) => {
+const SortControl = () => {
+	const [searchParams, setSearchParams] = useSearchParams();
+	const sortBy = searchParams.get("sortBy") || "release_date";
+
+	const handleSortChange = (e) => {
+		setSearchParams((searchParams) => {
+			searchParams.set("sortBy", e.target.value);
+			return searchParams;
+		});
+	};
+
 	return (
 		<div className="sort">
 			<label className="sort-by__label" htmlFor="sort-by">
@@ -11,7 +22,8 @@ const SortControl = ({ onSortChange }) => {
 					id="sort-by"
 					data-testid="sort-select"
 					className="sort-by"
-					onChange={onSortChange}
+					onChange={handleSortChange}
+					value={sortBy}
 				>
 					<option value="release_date">Release Date</option>
 					<option value="title">Title</option>
