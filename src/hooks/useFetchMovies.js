@@ -1,13 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useSearchParams } from "react-router-dom";
 
-const useFetchMovieData = (
-	REACT_APP_MOVIES_API_KEY,
-	searchedMovie,
-	sortCriterion,
-	selectedGenre
-) => {
+const useFetchMovieData = (REACT_APP_MOVIES_API_KEY) => {
 	const [moviesData, setMoviesData] = useState([]);
+	const [searchParams, setSearchParams] = useSearchParams();
 
 	useEffect(() => {
 		const controller = new AbortController();
@@ -18,14 +15,16 @@ const useFetchMovieData = (
 			const params = new URLSearchParams();
 			const limit = "30";
 
-			if (searchedMovie) {
-				params.set("search", searchedMovie);
-			}
-			params.set("sortBy", sortCriterion);
+			const searchedMovie = searchParams.get("search") || "";
+			searchedMovie && params.set("search", searchedMovie);
+			const sortBy = searchParams.get("sortBy") || "release_date";
+			params.set("sortBy", sortBy);
 			params.set("searchBy", "title");
 			params.set("sortOrder", "desc");
-			if (selectedGenre !== "all" && !searchedMovie) {
-				params.set("filter", selectedGenre);
+			const filter = searchParams.get("filter") || "all";
+
+			if (filter !== "all" && !searchedMovie) {
+				params.set("filter", filter);
 			}
 			params.set("limit", limit);
 
@@ -54,7 +53,7 @@ const useFetchMovieData = (
 		return () => {
 			controller.abort();
 		};
-	}, [searchedMovie, sortCriterion, selectedGenre, REACT_APP_MOVIES_API_KEY]);
+	}, [REACT_APP_MOVIES_API_KEY, searchParams]);
 
 	return moviesData;
 };
