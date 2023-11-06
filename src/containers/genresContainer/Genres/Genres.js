@@ -1,26 +1,14 @@
 import "./Genres.css";
 import Genre from "../Genre/Genre";
 
-const Genres = ({ onSelect, selectedGenre, genreData }) => {
+const Genres = ({ genreData }) => {
 	if (!genreData?.length) {
 		return <p>No genres available.</p>;
 	}
 
-	const handleGenreClick = (genre) => {
-		onSelect(genre);
-	};
-
 	const genreButtons = genreData.map((genre) => (
 		<li key={genre}>
-			<Genre
-				genre={genre}
-				isActive={
-					genre === "all"
-						? selectedGenre === ""
-						: genre === selectedGenre
-				}
-				onGenreClick={handleGenreClick}
-			/>
+			<Genre genre={genre} />
 		</li>
 	));
 	return (
