@@ -33,4 +33,14 @@ describe("Router test", () => {
 		cy.reload();
 		cy.url().should("contain", "?search=Tomb+Raider");
 	});
+
+	it("should match movie id with the id in the URL upon tile click", () => {
+		cy.get(".poster__img img")
+			.first()
+			.then(($img) => {
+				const movieId = $img.attr("data-id");
+				$img.click();
+				cy.location("pathname").should("eq", `/${movieId}`);
+			});
+	});
 });
