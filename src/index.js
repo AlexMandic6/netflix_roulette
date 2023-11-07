@@ -6,7 +6,9 @@ import ErrorPage from "error-page";
 import MovieListPage from "pages/MovieListPage/MovieListPage";
 
 import Header from "layouts/Header/Header";
-import MovieDetails from "components/MovieDetails/MovieDetails";
+import MovieDetails, {
+	loader as movieDetailsLoader,
+} from "components/MovieDetails/MovieDetails";
 
 const container = document.getElementById("root");
 const root = createRoot(container);
@@ -19,13 +21,13 @@ const router = createBrowserRouter([
 
 		children: [
 			{
-				path: "/",
 				index: true,
 				element: <Header />,
 			},
 			{
-				path: "/:movieId",
+				path: ":movieId",
 				element: <MovieDetails />,
+				loader: movieDetailsLoader,
 			},
 		],
 	},
