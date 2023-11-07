@@ -28,6 +28,7 @@ const MovieTile = ({ movieData }) => {
 					<NavLink to={`/${id}`} onClick={scrollToMovieDetail}>
 						<img
 							src={movieData?.poster_path}
+							data-id={movieData.id}
 							onError={(e) => {
 								e.target.src = fallbackPosterUrl;
 								e.target.classList.add("poster__fallback");
