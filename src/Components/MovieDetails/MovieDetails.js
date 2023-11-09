@@ -5,20 +5,28 @@ import extractYearFromDate from "utils/extractYearFromDate";
 import formatGenres from "utils/formatGenres";
 import formatTime from "utils/formatTime";
 import { getMovie } from "./api";
-import { useLoaderData, NavLink } from "react-router-dom";
+import {
+	useLoaderData,
+	NavLink,
+	useLocation,
+	createSearchParams,
+} from "react-router-dom";
 
 export function loader({ params }) {
 	return getMovie(params.movieId);
 }
 
 const MovieDetails = () => {
+	const { search } = useLocation();
+	const url = createSearchParams(search).toString();
+	const finalUrl = `/?${url}`;
 	const movieData = useLoaderData();
 
 	return (
 		<div className="movie-details">
 			<header className="search__logo">
 				<Logo />
-				<NavLink to="/" className="movie-details__search">
+				<NavLink to={finalUrl} className="movie-details__search">
 					{<img src={searchBtn} alt="search button" />}
 				</NavLink>
 			</header>
