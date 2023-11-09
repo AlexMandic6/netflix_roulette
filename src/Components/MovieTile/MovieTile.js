@@ -3,10 +3,13 @@ import "./MovieTile.css";
 import Dropdown from "components/Dropdown/Dropdown";
 import extractYearFromDate from "utils/extractYearFromDate";
 import formatGenres from "utils/formatGenres";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, createSearchParams } from "react-router-dom";
 
 const MovieTile = ({ movieData }) => {
 	const { id } = movieData;
+	const { search } = useLocation();
+	const url = createSearchParams(search).toString();
+	const finalUrl = `/${id}?${url}`;
 	const [isShown, setIsShown] = useState(false);
 
 	const fallbackPosterUrl =
@@ -25,7 +28,7 @@ const MovieTile = ({ movieData }) => {
 			>
 				<div className="poster__img">
 					{isShown && <Dropdown />}
-					<NavLink to={`/${id}`} onClick={scrollToMovieDetail}>
+					<NavLink to={finalUrl} onClick={scrollToMovieDetail}>
 						<img
 							src={movieData?.poster_path}
 							data-id={movieData.id}
