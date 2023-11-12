@@ -1,8 +1,5 @@
 import SearchForm from "components/SearchForm/SearchForm";
 import Logo from "components/Logo/Logo";
-import Button from "components/Button/Button";
-import MovieForm from "components/MovieForm/MovieForm";
-import { PortalWithState } from "react-portal";
 import { Outlet } from "react-router-dom";
 import "./Header.css";
 import { NavLink, useLocation, createSearchParams } from "react-router-dom";
