@@ -67,7 +67,10 @@ const MovieForm = ({ closePortal, title }) => {
 							transformedMovieObject
 						)
 						.then((response) => {
-							console.log("Response:", response);
+							console.log(
+								"Here we will add success dialog:",
+								response
+							);
 						})
 						.catch((error) => {
 							console.error("Error:", error);
