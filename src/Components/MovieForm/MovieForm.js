@@ -10,9 +10,15 @@ import Select from "react-select";
 import SelectStyles from "./movieFormSelectStyles";
 
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { useNavigate, useLocation, createSearchParams } from "react-router-dom";
 import axios from "axios";
 
 const MovieForm = ({ closePortal, title }) => {
+	const { search } = useLocation();
+	const url = createSearchParams(search).toString();
+	const finalUrl = `/?${url}`;
+	const navigate = useNavigate();
+
 	const options = [
 		{ value: "crime", label: "Crime" },
 		{ value: "documentary", label: "Documentary" },
@@ -24,14 +30,13 @@ const MovieForm = ({ closePortal, title }) => {
 		<Dialog title={title} closePortal={closePortal}>
 			<Formik
 				initialValues={{
-					title: "Test title",
+					title: "",
 					release_date: "",
-					poster_path:
-						"https://image.tmdb.org/t/p/w500/cvit6HDbXHE6W5kGPd47jd0wthQ.jpg",
-					vote_average: "6",
+					poster_path: "",
+					vote_average: "",
 					genres: "",
-					runtime: 120,
-					overview: "test overview",
+					runtime: "",
+					overview: "",
 				}}
 				validate={(values) => {
 					const errors = {};
@@ -60,7 +65,6 @@ const MovieForm = ({ closePortal, title }) => {
 				}}
 				onSubmit={(values, { setSubmitting }) => {
 					const transformedMovieObject = transformMovieObject(values);
-
 					axios
 						.post(
 							"http://localhost:4000/movies",
@@ -71,6 +75,7 @@ const MovieForm = ({ closePortal, title }) => {
 								"Here we will add success dialog:",
 								response
 							);
+							navigate(finalUrl);
 						})
 						.catch((error) => {
 							console.error("Error:", error);
@@ -180,7 +185,6 @@ const MovieForm = ({ closePortal, title }) => {
 									options={options}
 									styles={SelectStyles}
 									onChange={(option) => {
-										console.log("Option:", option);
 										return formik.setFieldValue(
 											"genres",
 											option
