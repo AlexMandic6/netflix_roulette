@@ -10,7 +10,6 @@ const MovieTile = ({ movieData }) => {
 	const { search } = useLocation();
 	const url = createSearchParams(search).toString();
 	const finalUrl = `/${id}?${url}`;
-	const [isShown, setIsShown] = useState(false);
 
 	const fallbackPosterUrl =
 		"https://static.displate.com/857x1200/displate/2022-04-15/7422bfe15b3ea7b5933dffd896e9c7f9_46003a1b7353dc7b5a02949bd074432a.jpg";
@@ -21,13 +20,9 @@ const MovieTile = ({ movieData }) => {
 
 	return (
 		<>
-			<div
-				className="poster"
-				onMouseEnter={() => setIsShown(true)}
-				onMouseLeave={() => setIsShown(false)}
-			>
+			<div className="poster">
 				<div className="poster__img">
-					{isShown && <Dropdown />}
+					<Dropdown />
 					<NavLink to={finalUrl} onClick={scrollToMovieDetail}>
 						<img
 							src={movieData?.poster_path}
