@@ -16,6 +16,7 @@ const AddMovieForm = () => {
 							<MovieForm
 								closePortal={closePortal}
 								title="Add Movie"
+								httpReq="POST"
 							/>
 						)}
 				</>
