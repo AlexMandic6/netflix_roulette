@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import "./MovieTile.css";
 import Dropdown from "components/Dropdown/Dropdown";
 import extractYearFromDate from "utils/extractYearFromDate";
@@ -22,7 +21,8 @@ const MovieTile = ({ movieData }) => {
 		<>
 			<div className="poster">
 				<div className="poster__img">
-					<Dropdown />
+					<Dropdown id={movieData.id} />
+
 					<NavLink to={finalUrl} onClick={scrollToMovieDetail}>
 						<img
 							src={movieData?.poster_path}
