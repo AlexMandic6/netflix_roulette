@@ -229,19 +229,6 @@ const MovieForm = ({ closePortal, title, httpReq, movieData }) => {
 								>
 									Genre:
 								</label>
-								{/* <Field
-									as={Select}
-									name="genres"
-									isMulti
-									options={options}
-									styles={SelectStyles}
-									onChange={(option) => {
-										return formik.setFieldValue(
-											"genres",
-											option
-										);
-									}}
-								/> */}
 								<Field
 									as={Select}
 									name="genres"
