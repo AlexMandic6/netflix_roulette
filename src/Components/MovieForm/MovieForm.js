@@ -80,12 +80,12 @@ const MovieForm = ({ closePortal, title, httpReq, movieData }) => {
 				}}
 				onSubmit={(values, { setSubmitting }) => {
 					if (httpReq && httpReq === "POST") {
-						const transformedMovieObject =
+						const transformedGenreObject =
 							transformMovieObject(values);
 						axios
 							.post(
 								"http://localhost:4000/movies",
-								transformedMovieObject
+								transformedGenreObject
 							)
 							.then((response) => {
 								alert(
