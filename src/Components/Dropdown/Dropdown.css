@@ -100,7 +100,7 @@
 	width: 100%;
 }
 
-.dropdown button {
+.dropdown__btn {
 	background-color: var(--select-focus);
 	color: white;
 	text-decoration: none;
@@ -111,7 +111,7 @@
 	box-sizing: border-box;
 }
 
-.dropdown button:hover {
+.dropdown__btn:hover {
 	background-color: var(--color-red);
 }
 
