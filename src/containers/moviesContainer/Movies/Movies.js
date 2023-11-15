@@ -1,7 +1,7 @@
 import MovieTile from "components/MovieTile/MovieTile";
 import "./Movies.css";
 
-const Movies = ({ moviesData, onMoveDetail }) => {
+const Movies = ({ moviesData }) => {
 	const movieList = [...moviesData].map((movie) => {
 		const {
 			poster_path,
@@ -11,6 +11,7 @@ const Movies = ({ moviesData, onMoveDetail }) => {
 			runtime,
 			overview,
 			vote_average,
+			id,
 		} = movie;
 
 		const movieData = {
@@ -21,10 +22,11 @@ const Movies = ({ moviesData, onMoveDetail }) => {
 			runtime,
 			overview,
 			vote_average,
+			id,
 		};
 		return (
 			<li key={movie.id}>
-				<MovieTile movieData={movieData} onMoveDetail={onMoveDetail} />
+				<MovieTile movieData={movieData} />
 			</li>
 		);
 	});

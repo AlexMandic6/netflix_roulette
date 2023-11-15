@@ -5,10 +5,7 @@ import MovieForm from "components/MovieForm/MovieForm";
 import { PortalWithState } from "react-portal";
 import "./Header.css";
 
-const Header = ({ onSearchedMovie }) => {
-	const onSearch = (searchTerm) => {
-		onSearchedMovie(searchTerm);
-	};
+const Header = () => {
 	return (
 		<div className="search">
 			<div className="search__logo">
@@ -34,7 +31,7 @@ const Header = ({ onSearchedMovie }) => {
 			</div>
 			<div className="search__form__wrapper">
 				<h1 className="search__title">Find your movie</h1>
-				<SearchForm onSearch={onSearch} />
+				<SearchForm />
 			</div>
 		</div>
 	);

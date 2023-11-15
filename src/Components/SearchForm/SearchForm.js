@@ -1,18 +1,27 @@
 import { useRef } from "react";
 import "./SearchForm.css";
-
 import Button from "components/Button/Button";
+import { useSearchParams } from "react-router-dom";
 
-const SearchForm = ({ onSearch }) => {
+const SearchForm = () => {
+	const [searchParams, setSearchParams] = useSearchParams();
+	const search = searchParams.get("search") || "";
+
 	const inputRef = useRef(null);
 
 	const handleSearch = () => {
-		onSearch(inputRef.current.value);
+		setSearchParams((searchParams) => {
+			searchParams.set("search", inputRef.current.value);
+			return searchParams;
+		});
 	};
 
 	const handleSubmit = (e) => {
 		if (e.key === "Enter") {
-			onSearch(inputRef.current.value);
+			setSearchParams((searchParams) => {
+				searchParams.set("search", inputRef.current.value);
+				return searchParams;
+			});
 		}
 	};
 
@@ -22,6 +31,7 @@ const SearchForm = ({ onSearch }) => {
 				className="search-form__input"
 				type="text"
 				ref={inputRef}
+				defaultValue={search}
 				placeholder="What do you want to watch?"
 				onKeyDown={handleSubmit}
 			/>
