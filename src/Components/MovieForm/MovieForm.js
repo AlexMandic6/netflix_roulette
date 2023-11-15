@@ -2,7 +2,12 @@ import Dialog from "components/Dialog/Dialog";
 import Button from "components/Button/Button";
 
 import DatePicker from "react-datepicker";
-import { isUrlValid, transformMovieObject } from "./movieFormUtils";
+import {
+	isUrlValid,
+	transformMovieObject,
+	combineObjects,
+	convertGenresToObjArr,
+} from "./movieFormUtils";
 import "react-datepicker/dist/react-datepicker.css";
 import "./MovieForm.css";
 
@@ -13,7 +18,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useNavigate, useLocation, createSearchParams } from "react-router-dom";
 import axios from "axios";
 
-const MovieForm = ({ closePortal, title }) => {
+const MovieForm = ({ closePortal, title, httpReq, movieData }) => {
 	const { search } = useLocation();
 	const url = createSearchParams(search).toString();
 	const finalUrl = `/?${url}`;
@@ -30,13 +35,15 @@ const MovieForm = ({ closePortal, title }) => {
 		<Dialog title={title} closePortal={closePortal}>
 			<Formik
 				initialValues={{
-					title: "",
-					release_date: "",
-					poster_path: "",
-					vote_average: "",
-					genres: "",
-					runtime: "",
-					overview: "",
+					title: movieData?.title || "",
+					release_date: movieData
+						? new Date(movieData?.release_date)
+						: "",
+					poster_path: movieData?.poster_path || "",
+					vote_average: movieData?.vote_average || "",
+					genres: convertGenresToObjArr(movieData?.genres) || "",
+					runtime: movieData?.runtime || "",
+					overview: movieData?.overview || "",
 				}}
 				validate={(values) => {
 					const errors = {};
@@ -61,26 +68,57 @@ const MovieForm = ({ closePortal, title }) => {
 					} else if (!isUrlValid(values.poster_path)) {
 						errors.poster_path = "Please enter a valid URL";
 					}
+					if (!values.vote_average) {
+						errors.vote_average = "Please enter the movie rating";
+					} else if (
+						values.vote_average < 1 ||
+						values.vote_average > 10
+					) {
+						errors.vote_average = "Rating must be between 1 and 10";
+					}
 					return errors;
 				}}
 				onSubmit={(values, { setSubmitting }) => {
-					const transformedMovieObject = transformMovieObject(values);
-					axios
-						.post(
-							"http://localhost:4000/movies",
-							transformedMovieObject
-						)
-						.then((response) => {
-							console.log(
-								"Here we will add success dialog:",
-								response
-							);
-							navigate(finalUrl);
-						})
-						.catch((error) => {
-							console.error("Error:", error);
-						});
-					setSubmitting(false);
+					if (httpReq && httpReq === "POST") {
+						const transformedMovieObject =
+							transformMovieObject(values);
+						axios
+							.post(
+								"http://localhost:4000/movies",
+								transformedMovieObject
+							)
+							.then((response) => {
+								alert(
+									"The movie has been added ti the database successfully!"
+								);
+								navigate(finalUrl);
+							})
+							.catch((error) => {
+								console.error("Error:", error);
+							});
+						setSubmitting(false);
+					}
+					if (httpReq && httpReq === "PUT") {
+						const movieValuesCombined = combineObjects(
+							movieData,
+							values
+						);
+						const transformedGenreObject =
+							transformMovieObject(movieValuesCombined);
+						axios
+							.put(
+								"http://localhost:4000/movies",
+								transformedGenreObject
+							)
+							.then((response) => {
+								alert("Movie updated successfully!");
+								navigate(finalUrl);
+							})
+							.catch((error) => {
+								console.error("Error:", error);
+							});
+						setSubmitting(false);
+					}
 				}}
 			>
 				{(formik) => {
@@ -104,7 +142,11 @@ const MovieForm = ({ closePortal, title }) => {
 									className="form-group__input"
 									placeholder="Title"
 								/>
-								<ErrorMessage name="title" />
+								<ErrorMessage
+									component="div"
+									className="formik-error-message"
+									name="title"
+								/>
 							</div>
 
 							<div className="form-group">
@@ -151,7 +193,11 @@ const MovieForm = ({ closePortal, title }) => {
 									placeholder="https:"
 									className="form-group__input"
 								/>
-								<ErrorMessage name="poster_path" />
+								<ErrorMessage
+									name="poster_path"
+									component="div"
+									className="formik-error-message"
+								/>
 							</div>
 							<div className="form-group">
 								<label
@@ -170,6 +216,11 @@ const MovieForm = ({ closePortal, title }) => {
 									className="form-group__input"
 									placeholder="7.8"
 								/>
+								<ErrorMessage
+									name="vote_average"
+									component="div"
+									className="formik-error-message"
+								/>
 							</div>
 							<div className="form-group">
 								<label
@@ -178,7 +229,7 @@ const MovieForm = ({ closePortal, title }) => {
 								>
 									Genre:
 								</label>
-								<Field
+								{/* <Field
 									as={Select}
 									name="genres"
 									isMulti
@@ -190,8 +241,25 @@ const MovieForm = ({ closePortal, title }) => {
 											option
 										);
 									}}
+								/> */}
+								<Field
+									as={Select}
+									name="genres"
+									isMulti
+									styles={SelectStyles}
+									onChange={(option) => {
+										return formik.setFieldValue(
+											"genres",
+											option
+										);
+									}}
+									options={options}
 								/>
-								<ErrorMessage name="genres" />
+								<ErrorMessage
+									name="genres"
+									component="div"
+									className="formik-error-message"
+								/>
 							</div>
 							<div className="form-group">
 								<label
@@ -208,7 +276,11 @@ const MovieForm = ({ closePortal, title }) => {
 									className="form-group__input"
 									placeholder="minutes"
 								/>
-								<ErrorMessage name="runtime" />
+								<ErrorMessage
+									name="runtime"
+									component="div"
+									className="formik-error-message"
+								/>
 							</div>
 							<div className="form-group form-group--full-width">
 								<label
@@ -226,7 +298,11 @@ const MovieForm = ({ closePortal, title }) => {
 									className="form-group__input form-group__input--textarea"
 									placeholder="Movie description"
 								></Field>
-								<ErrorMessage name="overview" />
+								<ErrorMessage
+									name="overview"
+									component="div"
+									className="formik-error-message"
+								/>
 							</div>
 							<div className="form-group form-group__btns form-group--full-width">
 								<Button
