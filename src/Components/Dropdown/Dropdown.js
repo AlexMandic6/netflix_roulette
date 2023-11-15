@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import "./Dropdown.css";
+import { NavLink, useLocation, createSearchParams } from "react-router-dom";
 
-import MovieForm from "components/MovieForm/MovieForm";
-import { PortalWithState } from "react-portal";
-
-const Dropdown = () => {
+const Dropdown = ({ id }) => {
 	const [isActive, setIsActive] = useState(false);
+
+	const { search } = useLocation();
+	const url = createSearchParams(search).toString();
+	const finalUrl = `/${id}/edit?${url}`;
 
 	const toggleDropdown = () => {
 		setIsActive(!isActive);
@@ -21,38 +23,11 @@ const Dropdown = () => {
 			<p className={`cross ${isActive ? "active" : ""}`}>x</p>
 			<figure></figure>
 			<ul className={`dropdown ${isActive ? "active" : ""}`}>
-				<PortalWithState closeOnEsc>
-					{({ openPortal, closePortal, isOpen, portal }) => (
-						<>
-							<li>
-								<button onClick={openPortal}>Edit</button>
-							</li>
-							{isOpen &&
-								portal(
-									<MovieForm
-										closePortal={closePortal}
-										title="Edit Movie"
-									/>
-								)}
-						</>
-					)}
-				</PortalWithState>
-				<PortalWithState closeOnEsc>
-					{({ openPortal, closePortal, isOpen, portal }) => (
-						<>
-							<li>
-								<button onClick={openPortal}>Delete</button>
-							</li>
-							{isOpen &&
-								portal(
-									<MovieForm
-										closePortal={closePortal}
-										title="Delete Movie"
-									/>
-								)}
-						</>
-					)}
-				</PortalWithState>
+				<NavLink to={finalUrl} className="dropdown__btn">
+					Edit
+				</NavLink>
+				{/* TODO: add delete functionality */}
+				<li className="dropdown__btn">Delete</li>
 			</ul>
 		</div>
 	);
