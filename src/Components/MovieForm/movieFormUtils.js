@@ -14,3 +14,40 @@ export function transformMovieObject(movieObject) {
 		genres: transformedGenres,
 	};
 }
+
+export function convertGenresToObjArr(genres) {
+	if (!genres) return;
+	return genres.map((genre) => ({
+		value: genre.toLowerCase(),
+		label: genre.charAt(0).toUpperCase() + genre.slice(1),
+	}));
+}
+
+export function combineObjects(obj1, obj2) {
+	const combinedObject = {};
+
+	for (const key in obj1) {
+		if (obj1.hasOwnProperty(key)) {
+			combinedObject[key] =
+				key === "genres"
+					? obj2.hasOwnProperty(key) && Array.isArray(obj2[key])
+						? obj2[key]
+						: obj1[key]
+					: obj2.hasOwnProperty(key)
+					? obj2[key]
+					: obj1[key];
+		}
+	}
+
+	for (const key in obj2) {
+		if (obj2.hasOwnProperty(key) && !obj1.hasOwnProperty(key)) {
+			combinedObject[key] = obj2[key];
+		}
+	}
+
+	if (!combinedObject.hasOwnProperty("tagline") || !combinedObject.tagline) {
+		combinedObject.tagline = "Tagline is missing...";
+	}
+
+	return combinedObject;
+}
