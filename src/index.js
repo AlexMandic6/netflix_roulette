@@ -4,8 +4,9 @@ import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "error-page";
 import MovieListPage from "pages/MovieListPage/MovieListPage";
-
 import Header from "layouts/Header/Header";
+import AddMovieForm from "components/AddMovieForm/AddMovieForm";
+import EditMovieForm from "components/EditMovieForm/EditMovieForm";
 import MovieDetails, {
 	loader as movieDetailsLoader,
 } from "components/MovieDetails/MovieDetails";
@@ -21,8 +22,20 @@ const router = createBrowserRouter([
 
 		children: [
 			{
-				index: true,
+				path: "/",
 				element: <Header />,
+
+				children: [
+					{
+						path: "/new",
+						element: <AddMovieForm />,
+					},
+					{
+						path: ":movieId/edit",
+						element: <EditMovieForm />,
+						loader: movieDetailsLoader,
+					},
+				],
 			},
 			{
 				path: ":movieId",

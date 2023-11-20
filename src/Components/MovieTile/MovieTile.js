@@ -1,13 +1,14 @@
-import React, { useState } from "react";
 import "./MovieTile.css";
 import Dropdown from "components/Dropdown/Dropdown";
 import extractYearFromDate from "utils/extractYearFromDate";
 import formatGenres from "utils/formatGenres";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, createSearchParams } from "react-router-dom";
 
 const MovieTile = ({ movieData }) => {
 	const { id } = movieData;
-	const [isShown, setIsShown] = useState(false);
+	const { search } = useLocation();
+	const url = createSearchParams(search).toString();
+	const finalUrl = `/${id}?${url}`;
 
 	const fallbackPosterUrl =
 		"https://static.displate.com/857x1200/displate/2022-04-15/7422bfe15b3ea7b5933dffd896e9c7f9_46003a1b7353dc7b5a02949bd074432a.jpg";
@@ -18,14 +19,11 @@ const MovieTile = ({ movieData }) => {
 
 	return (
 		<>
-			<div
-				className="poster"
-				onMouseEnter={() => setIsShown(true)}
-				onMouseLeave={() => setIsShown(false)}
-			>
+			<div className="poster">
 				<div className="poster__img">
-					{isShown && <Dropdown />}
-					<NavLink to={`/${id}`} onClick={scrollToMovieDetail}>
+					<Dropdown id={movieData.id} />
+
+					<NavLink to={finalUrl} onClick={scrollToMovieDetail}>
 						<img
 							src={movieData?.poster_path}
 							data-id={movieData.id}
