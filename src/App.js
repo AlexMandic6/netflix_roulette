@@ -1,23 +1,17 @@
-import logo from "./logo.svg";
+import React from "react";
 import "./App.css";
+// import Counter from "components/Counter/Counter";
+import MovieListPage from "pages/MovieListPage/MovieListPage";
+import Footer from "layouts/Footer/Footer";
 
-function App() {
+const App = () => {
 	return (
-		<div className="App">
-			<header className="App-header">
-				<img src={logo} className="App-logo" alt="logo" />
-				<p>Netflix Roulette</p>
-				<a
-					className="App-link"
-					href="https://reactjs.org"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					Learn React
-				</a>
-			</header>
-		</div>
+		<>
+			{/* <Counter initialCount={0} /> */}
+			<MovieListPage />
+			<Footer />
+		</>
 	);
-}
+};
 
 export default App;

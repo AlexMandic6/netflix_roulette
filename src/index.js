@@ -1,17 +1,53 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import * as React from "react";
+import { createRoot } from "react-dom/client";
+import App from "./App";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import ErrorPage from "error-page";
+import MovieListPage from "pages/MovieListPage/MovieListPage";
+import Header from "layouts/Header/Header";
+import AddMovieForm from "components/AddMovieForm/AddMovieForm";
+import EditMovieForm from "components/EditMovieForm/EditMovieForm";
+import MovieDetails, {
+	loader as movieDetailsLoader,
+} from "components/MovieDetails/MovieDetails";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const container = document.getElementById("root");
+const root = createRoot(container);
+
+const router = createBrowserRouter([
+	{
+		path: "/",
+		element: <MovieListPage />,
+		errorElement: <ErrorPage />,
+
+		children: [
+			{
+				path: "/",
+				element: <Header />,
+
+				children: [
+					{
+						path: "/new",
+						element: <AddMovieForm />,
+					},
+					{
+						path: ":movieId/edit",
+						element: <EditMovieForm />,
+						loader: movieDetailsLoader,
+					},
+				],
+			},
+			{
+				path: ":movieId",
+				element: <MovieDetails />,
+				loader: movieDetailsLoader,
+			},
+		],
+	},
+]);
+
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+	<React.StrictMode>
+		<RouterProvider router={router} />
+	</React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
