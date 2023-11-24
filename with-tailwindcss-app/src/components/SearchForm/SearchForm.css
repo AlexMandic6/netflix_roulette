@@ -1,0 +1,17 @@
+.search-form {
+	display: flex;
+	justify-content: space-between;
+	gap: 14px;
+}
+
+.search-form__input {
+	width: 100%;
+	font-size: 20px;
+	font-weight: 400;
+	padding: 16px 19px;
+	border: none;
+	border-radius: 3px;
+	color: #4f4f4f;
+	background-color: #1c1c1c;
+	opacity: 0.8;
+}
